@@ -7,7 +7,7 @@ export default class FeaturedRooms extends Component{
     static contextType = RoomContext;
 
     render(){
-        let {loading, featuredRooms :rooms} = this.context
+        let {loading, featuredRooms} = this.context
 
         return(
             <div className='container-fluid py-5 mb-5 featured-rooms' id='featured-rooms'>
@@ -20,7 +20,7 @@ export default class FeaturedRooms extends Component{
                 </div>
                 <div className="row mx-5">
                     {loading? <Loading/> :
-                        rooms.map(room => {
+                        featuredRooms.map(room => {
                             return (<div className='col-10 mx-auto col-md-4 my-3' key={room.id}>
                                 <Room room={room} />
                             </div>)

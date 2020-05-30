@@ -13,12 +13,10 @@ export default class Navbar extends Component{
     }
 
     render(){
-        const show = this.state.menu ? "show" : ""
+        const show = this.state.menu ? "show" : "";
         return(
             <nav className="navbar navbar-expand-lg px-5 navbar-dark">
-                <a className="navbar-brand" href="#home">
-                    <img src={logo} alt=""/>
-                </a>
+                <Link to='/' className="navbar-brand"><img src={logo} alt=""/></Link>
                 <button className="navbar-toggler d-lg-none" type="button" onClick={this.ToggleMenu}>
                     <span className="navbar-toggler-icon"></span>
                 </button>

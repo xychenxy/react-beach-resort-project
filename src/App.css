@@ -116,7 +116,7 @@ h1 {
 }
 
 /*room banner*/
-.room-banner{
+.rooms-banner{
   background: url("./images/room-2.jpeg")center/cover no-repeat fixed;
   min-height: 60vh;
 }
@@ -210,4 +210,12 @@ h1 {
   text-align: center;
   font-weight: 700;
   letter-spacing: var(--mainSpacing);
+}
+
+/*extras*/
+.extras{
+  text-decoration: none;
+}
+.list-group-item{
+  border:none!important;
 }

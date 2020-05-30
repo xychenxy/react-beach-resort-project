@@ -50,13 +50,79 @@ class RoomProvider extends Component{
         return tempItems;
     }
 
+    getRoom = slug =>{
+        let tempRooms = [...this.state.rooms]
+        const room = tempRooms.find(room=>room.slug === slug)
+        return room;
+    }
+
+    handleChange = e =>{
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value
+        const name = e.target.name
+        this.setState(
+            {
+                [name]:value
+            },
+            this.filterRooms
+        )
+    }
+
+    filterRooms = () =>{
+        let {
+            rooms,
+            type,
+            capacity,
+            price,
+            minSize,
+            maxSize,
+            breakfast,
+            pets
+        } = this.state;
+        let allRooms = [...rooms]
+        capacity = parseInt(capacity)
+        price = parseInt(price)
+
+        // filter by type
+        if (type !== 'all'){
+            allRooms = allRooms.filter(room=>room.type === type)
+        }
+
+        // filter by capacity{
+        if (capacity !== 1){
+            allRooms = allRooms.filter(room=>room.capacity >= capacity)
+        }
+
+        // filter by price
+        allRooms = allRooms.filter(room => room.price <= price);
+        // filter by size
+        allRooms = allRooms.filter(
+            room => room.size >= minSize && room.size <= maxSize
+        );
+        // filter by breakfast
+        if (breakfast) {
+            allRooms = allRooms.filter(room => room.breakfast === true);
+        }
+        // filter by pets
+        if (pets) {
+            allRooms = allRooms.filter(room => room.pets === true);
+        }
+
+        this.setState({
+            sortedRooms: allRooms
+        })
+
+    }
+
+
 
     render(){
         return(
             <RoomContext.Provider
                 value={{
                     ...this.state,
-
+                    getRoom:this.getRoom,
+                    handleChange:this.handleChange
                 }}
             >
                 {this.props.children}
