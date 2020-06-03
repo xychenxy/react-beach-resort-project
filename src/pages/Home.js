@@ -13,6 +13,10 @@ export default class Home extends Component{
             paddingRight: '2rem',
             paddingTop: '2rem',
             paddingBottom: '2rem',
+            backgroundPosition:'center',
+            backgroundAttachment:'fixed',
+            backgroundRepeat:'no-repeat',
+            backgroundSize:'cover'
 
         }
         return(
